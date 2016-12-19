@@ -36,11 +36,9 @@ class ChorusContainer extends React.Component {
 		return (
 			<div className="main-containter">
 				<CommentsList
-				comments={this.state.comments}
-				/>
+					comments={this.state.comments} />
 				<SubmitComment
-					onSubmitComment={this.handleSubmitComment}
-					/>
+					onSubmitComment={this.handleSubmitComment} />
 			</div>
 		);
 	}
