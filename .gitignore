@@ -1,4 +1,4 @@
-# Boiler Plate .gitignore file from: 
+# Boiler Plate .gitignore file from:
 # https://github.com/github/gitignore/blob/master/Node.gitignore
 
 # Logs
@@ -48,6 +48,9 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
+
+# Source maps
+*.map
 
 # Store
 .DS_Store

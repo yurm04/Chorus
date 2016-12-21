@@ -1,7 +1,7 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 	template: __dirname + '/app/index.html',
-	filename: 'index.html',
+	filename: '../index.html',
 	inject: 'body'
 });
 
@@ -11,8 +11,8 @@ module.exports = {
 	],
 
 	output: {
-		path: __dirname + '/dist',
-		filename: 'index_bundle.js'
+		path: __dirname + '/public/js',
+		filename: 'bundle.js'
 	},
 
 	module: {
@@ -23,5 +23,7 @@ module.exports = {
 
 	plugins: [
 		HtmlWebpackPluginConfig
-	]
+	],
+
+	devtool: 'source-map'
 }
