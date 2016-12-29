@@ -5,7 +5,6 @@ import Comment from '../components/Comment';
 import getAllComments from '../utils/helpers';
 const PropTypes = React.PropTypes;
 
-
 class ChorusContainer extends React.Component {
 	constructor(props) {
 		super(props);
