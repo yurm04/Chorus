@@ -11,10 +11,14 @@ class SubmitComment extends React.Component {
 
 	createComment(e) {
 		e.preventDefault();
-		const inputValue = document.querySelector('.comment-text').value;
+		const inputEl = document.querySelector('.comment-text');
+		const inputValue = inputEl.value;
 
 		if (inputValue !== '') {
 			this.props.onSubmitComment(inputValue);
+
+			// clear out input after submit
+			inputEl.value ='';
 		}
 	}
 

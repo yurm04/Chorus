@@ -5,6 +5,7 @@ import ChorusContainer from './containers/ChorusContainer';
 class Chorus extends React.Component {
 	constructor(props) {
 		super(props);
+		self.io = io();
 	}
 
 	render() {
