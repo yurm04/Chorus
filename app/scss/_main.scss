@@ -20,6 +20,7 @@ p {
 	flex: 1 1 auto;
 	height: 100%;
 	flex-flow: column;
+	height: 100vh;
 }
 
 .header {
@@ -132,4 +133,3 @@ p,
 		color: lighten($color-tuna, 20%);
 	}
 }
-

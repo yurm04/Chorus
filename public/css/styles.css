@@ -34,7 +34,8 @@ p {
   display: flex;
   flex: 1 1 auto;
   height: 100%;
-  flex-flow: column; }
+  flex-flow: column;
+  height: 100vh; }
 
 .header {
   z-index: 1;
