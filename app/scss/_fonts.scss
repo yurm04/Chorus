@@ -1,7 +1,9 @@
 $open-sans: "Open Sans";
+$bungee-shade: "Bungee Shade";
 $sans-serif: "Helvetica Nueue", "Helvetica", "Arial", sans-serif;
 
-$OpenSans: "#{$open-sans}, $sans-serif";
+$OpenSans: $open-sans, $sans-serif;
+$BungeeShade: $bungee-shade, $sans-serif;
 
 @font-face {
 	font-family: $open-sans;
@@ -16,3 +18,11 @@ $OpenSans: "#{$open-sans}, $sans-serif";
 	font-weight: 600;
 	font-style: normal;
 }
+
+@font-face {
+	font-family: $bungee-shade;
+	src: url("/fonts/BungeeShade-Regular.ttf") format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+

@@ -6,33 +6,46 @@ class SubmitComment extends React.Component {
 		super(props);
 
 		// bound functions
-		this.createComment = this.createComment.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	createComment(e) {
+	handleSubmit(e) {
 		e.preventDefault();
-		const inputEl = document.querySelector('.comment-text');
+		const inputEl = document.querySelector('.text-input');
 		const inputValue = inputEl.value;
 
-		if (inputValue !== '') {
-			this.props.onSubmitComment(inputValue);
-
-			// clear out input after submit
-			inputEl.value ='';
+		if (inputValue === '') {
+			return false;
 		}
+
+		// submit input based on if is username or comment
+		if (!this.props.username) {
+			this.props.onSubmitUsername(inputValue);
+		} else {
+			this.props.onSubmitComment(inputValue);
+		}
+
+		// clear out input after submit
+		inputEl.value ='';
+
+		// force blur event
+		inputEl.blur();
 	}
 
 	render() {
+		let isFocused = 'submit-form' + (this.props.focus ? ' focus' : '');
+		let canSend   = 'submit-btn' + (this.props.canSend ? ' ready' : '');
+
 		return (
-			<form onSubmit={this.createComment}>
+			<form className={isFocused} onSubmit={this.handleSubmit}>
 				<input
-					className="comment-text"
+					className="text-input"
 					type="text"
-					placeholder="Enter new comment" />
+					placeholder={this.props.username ? "Enter new comment" : "Enter your name"} />
 				<button
-					className="submit-button"
+					className={canSend}
 					type="submit">
-					Submit
+					submit
 				</button>
 			</form>
 		);
@@ -40,7 +53,11 @@ class SubmitComment extends React.Component {
 }
 
 SubmitComment.propTypes = {
-	onSubmitComment: PropTypes.func.isRequired
+	onSubmitComment: PropTypes.func.isRequired,
+	onSubmitUsername: PropTypes.func.isRequired,
+	username: PropTypes.string.isRequired,
+	focus: PropTypes.bool,
+	canSend: PropTypes.bool,
 };
 
 export default SubmitComment;
