@@ -10,7 +10,6 @@ let ioSocket;
 
 function socketsHandler(socket) {
 	ioSocket = socket;
-	console.log('hello socket', ioSocket.client.conn.id);
 
 	// disconnect event handler
 	ioSocket.on('disconnect', () => console.log('ok i love you bye bye'));
@@ -25,8 +24,6 @@ function socketsHandler(socket) {
 
 function newUserHandler(username) {
 	// add user to users list
-	console.log(ioSocket.client.conn.id);
-	console.log('New user added', username);
 	pub.hset('users', ioSocket.client.conn.id, username);
 
 	pub.hget('users', ioSocket.client.conn.id, (err, username) => {
@@ -34,15 +31,12 @@ function newUserHandler(username) {
 			console.log('OH NO in newUserHandler', err);
 			return false;
 		}
-
-		console.log(username);
 	})
 	// don't think i need to publish new users right now..
 	// pub.publish('chorus:users:new', name);
 }
 
 function newCommentHandler(message) {
-	console.log(message);
 	const sanitizedMessage = xssFilters.inHTMLData(message);
 
 	pub.hget('users', ioSocket.client.conn.id, (err, username) => {
@@ -61,7 +55,6 @@ function newCommentHandler(message) {
 			time: moment(timestamp).format('h:mm:ss a')
 		});
 
-		console.log(comment);
 		// add new comment to the end of the redis list
 		pub.rpush('chorus:comments', comment);
 
@@ -74,7 +67,6 @@ function newCommentHandler(message) {
 
 
 const loadComments = (req, reply) => {
-	console.log('request made to load comments');
 	redis.lrange('chorus:comments', 0, -1, (err, data) => {
 		if (err) {
 			console.log('OH NO redis can\'t load messages', err);
@@ -93,7 +85,6 @@ function disconnectHandler() {
 
 const init = (listener, cb) => {
 	pub.on('ready', () => {
-		console.log('PUB READY');
 		sub.on('ready', () => {
 			sub.subscribe('chorus:comments:latest', 'chorus:users:new');
 
