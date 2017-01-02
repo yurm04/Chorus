@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack --progress --colors --watch",
-    "serve": "nodemon server.js",
-    "prod": "webpack -p"
+    "start": "PORT=8080 nodemon server.js",
+    "start:prod": "CHORUS_PORT=8080 pm2 start /home/chorus/server.js",
+    "build:prod": "webpack -p"
   },
   "repository": {
     "type": "git",
