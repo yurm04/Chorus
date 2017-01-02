@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "webpack --progress --colors --watch",
     "start": "NODE_PORT=8080 HOSTNAME=\"127.0.0.1\" nodemon server.js",
-    "start:prod": "NODE_PORT=8080 HOSTNAME=\"127.0.0.1\" pm2 start /home/chorus/server.js",
+    "start:prod": "NODE_PORT=2368 HOSTNAME=\"127.0.0.1\" pm2 start /home/chorus/server.js",
     "build:prod": "webpack -p"
   },
   "repository": {
